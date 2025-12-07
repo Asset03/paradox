@@ -1,6 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import './globals.css';
+import Navigation from './components/Navigation';
+import { AntdRegistry } from '@ant-design/nextjs-registry';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,11 +25,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ru">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <AntdRegistry>
+          <div className="min-h-screen bg-gray-50">
+            <div className="max-w-7xl mx-auto px-4 py-8">
+              <h1 className="text-3xl font-bold text-black mb-6">Test Paradox</h1>
+              <Navigation />
+              {children}
+            </div>
+          </div>
+        </AntdRegistry>
       </body>
     </html>
   );
